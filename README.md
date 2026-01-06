@@ -132,27 +132,13 @@ flutter run
 - Firestore rules are assumed to be open for development.
 - API keys are safe for client usage; security is enforced via Firestore rules.
 
----
 
-## 🎯 Interview Talking Points
 
-You can confidently say:
-
-> “I built a Flutter app using GetX and Firestore that manages session lifecycle, handles runtime permissions, displays a real camera preview with rotation, and tracks session duration in real time.”
-
----
-
-## 🔮 Future Enhancements
-
-- Session history screen
-- Admin panel to create sessions
-- WebRTC / Agora integration
-- Picture-in-Picture support
-- Background session handling
-
----
 
 ## 👤 Author
 
-**Mohammad Asim Siddiqui**  
-Flutter & Frontend Developer
+- **Asim Siddiqui**
+- **Contact Information**
+  - Email: asimsiddiqui8181@gmail.com
+  - LinkedIn: [Asim Siddiqui](https://www.linkedin.com/in/asim-siddiqui-a71731229/)
+  - Portfolio: [Asim Sidd](https://asimsidd.vercel.app/)
