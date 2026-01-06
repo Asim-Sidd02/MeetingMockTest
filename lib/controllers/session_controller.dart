@@ -12,32 +12,25 @@ class SessionController extends GetxController {
   void onInit() {
     super.onInit();
     _seedSessions();
-    _resetCompletedSessions();
+
   }
-  Future<void> _resetCompletedSessions() async {
-    final completed = await _firestore
+  Future<void> _seedSessions() async {
+    final activeSessions = await _firestore
         .collection('sessions')
-        .where('status', isEqualTo: 'completed')
+        .where('status', whereIn: ['upcoming', 'ongoing'])
         .get();
 
-    for (var doc in completed.docs) {
-      await doc.reference.update({
-        'status': 'upcoming',
-        'duration': 0,
-      });
-    }
-  }
-
-  Future<void> _seedSessions() async {
-    final snap = await _firestore.collection('sessions').get();
-    if (snap.docs.isEmpty) {
+    if (activeSessions.docs.isEmpty) {
       await _firestore.collection('sessions').add({
         'title': 'Flutter Video Call',
         'status': 'upcoming',
         'duration': 0,
+        'createdAt': Timestamp.now(),
       });
     }
   }
+
+
 
   Stream<QuerySnapshot> getSessions() {
     return _firestore
