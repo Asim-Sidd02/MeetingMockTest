@@ -1,16 +1,158 @@
-# meets
+# 📹 Flutter Video Session App
 
-A new Flutter project.
+A modern **2-screen Flutter application** demonstrating **Firestore integration, GetX state management, real-time camera video interface, permission handling, and session lifecycle tracking**.
 
-## Getting Started
+This project is designed to be **demo-safe**, **multi-run stable**, and **interview-ready**.
 
-This project is a starting point for a Flutter application.
+---
 
-A few resources to get you started if this is your first Flutter project:
+## ✨ Features
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### 🗓 Screen 1 – Appointments
+- Fetches sessions from **Firebase Firestore**
+- Displays **Upcoming / Ongoing Sessions**
+- “Join Session” button for each session
+- Automatic session seeding for demo stability
+- Camera & Microphone permission handling
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### 📞 Screen 2 – Video Call Interface
+- Real **camera preview** using device camera
+- **Camera rotation** (front ↔ back)
+- **Real-time stopwatch** tracking session duration
+- Modern, clean UI
+- “End Call” button to complete the session
+
+### 🔥 Firestore Integration
+- On **Join Session** → status updated to `ongoing`
+- On **End Call** → status updated to `completed`
+- Session duration saved in seconds
+- Start & end timestamps recorded
+
+---
+
+## 🧠 Tech Stack
+
+- **Flutter** (Material 3 UI)
+- **GetX** – State management & navigation
+- **Firebase Firestore** – Backend database
+- **Camera Plugin** – Real camera preview
+- **Permission Handler** – Runtime permissions
+
+---
+
+## 📂 Project Structure
+
+```
+lib/
+ ├── controllers/
+ │    └── session_controller.dart
+ │
+ ├── screens/
+ │    ├── appointments_screen.dart
+ │    └── video_call_screen.dart
+ │
+ ├── firebase_options.dart
+ └── main.dart
+```
+
+---
+
+## 🗄 Firestore Data Model
+
+```
+sessions {
+  title: string
+  status: "upcoming" | "ongoing" | "completed"
+  duration: number
+  startTime: timestamp
+  endTime: timestamp
+}
+```
+
+---
+
+## 🔐 Permissions Used
+
+### Android
+```
+<uses-permission android:name="android.permission.CAMERA" />
+<uses-permission android:name="android.permission.RECORD_AUDIO" />
+```
+
+Permissions are requested **at runtime** when joining a session.
+
+---
+
+## 🚀 How It Works (Flow)
+
+1. App launches and checks for active sessions
+2. If none exist, a session is auto-created (demo mode)
+3. User taps **Join**
+4. Camera & microphone permissions are requested
+5. Session status updated to `ongoing`
+6. Video call screen opens with live camera preview
+7. Stopwatch starts automatically
+8. User taps **End Call**
+9. Session marked as `completed`
+10. Duration saved to Firestore
+
+---
+
+## 🧪 Demo Stability (Multi-Run Safe)
+
+To ensure sessions always appear:
+- If no `upcoming` or `ongoing` sessions exist, the app automatically creates one.
+- This prevents empty screens on subsequent runs.
+
+---
+
+## 🛠 Setup Instructions
+
+### 1️⃣ Install Dependencies
+```
+flutter pub get
+```
+
+### 2️⃣ Firebase Setup
+- Create a Firebase project
+- Enable **Cloud Firestore**
+- Initialize Firebase using `firebase_options.dart`
+- Start Firestore in **test mode** (for development)
+
+### 3️⃣ Run the App
+```
+flutter run
+```
+
+---
+
+## ⚠️ Notes
+
+- This app uses a **real camera preview**, not a mock UI.
+- Firestore rules are assumed to be open for development.
+- API keys are safe for client usage; security is enforced via Firestore rules.
+
+---
+
+## 🎯 Interview Talking Points
+
+You can confidently say:
+
+> “I built a Flutter app using GetX and Firestore that manages session lifecycle, handles runtime permissions, displays a real camera preview with rotation, and tracks session duration in real time.”
+
+---
+
+## 🔮 Future Enhancements
+
+- Session history screen
+- Admin panel to create sessions
+- WebRTC / Agora integration
+- Picture-in-Picture support
+- Background session handling
+
+---
+
+## 👤 Author
+
+**Mohammad Asim Siddiqui**  
+Flutter & Frontend Developer
